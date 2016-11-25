@@ -275,25 +275,22 @@ public class ProyectoFinal {
         }
         System.out.println("\n");
         float SumaTotal =0;
-        for (int i=0;i<inventario.length;i++){
-            for(int j=0;j<inventario.length;j++){
-                for(int k = 0;k<inventario.length;k++){
-            String clave1=inventario[j][1]; // se iguala una posicion especifica del arreglo
-            System.out.println("¿Cuanta cantidad se vendió del articulo "+clave1+":");
-            cantidad=entrada.nextInt(); //Se le asigna un valor a la cantidad en entero
-            String cantidad1=inventario[j][0]; //Se toma un valor especifico de la tabla
-            int cantidadInt1=Integer.parseInt(cantidad1); //Se convierte a entero este valor especifico
-            CantidadTotal1= cantidadInt1-cantidad; // Se restan la cantidad original contra la que se vendió.
-            String cantidadString1=Integer.toString(CantidadTotal1); // La cantidad resultante se pasa a string
-            inventario[i][0]=cantidadString1; //Se asigna al arreglo la cantidad resultante
-            System.out.println("Lo restante es:"+inventario[i][0]); //Se le comenta al usuario cuanto mercancía queda.
-            String precioIndividualString=inventario[k][3]; // Se toma un valor especifico
-            float precioIndividualFloat=Float.parseFloat(precioIndividualString); //Este valor se convierte de string a float.
-            SumaTotal=precioIndividualFloat+SumaTotal; //Este valor se va sumando para que al final se pueda saber cuánto gasto el comprador.
+        for (int i=0;i<inventario.length;i++)
+        {
+            String clave1=inventario[i][1];
+            System.out.println("¿Cuanta cantidad se vendio del articulo?"+clave1+":");
+            cantidad=entrada.nextInt();
+            int cantidad1=Integer.parseInt(inventario[i][0]);
+            CantidadTotal1= cantidad1-cantidad;
+            String cantidadString1=Integer.toString(CantidadTotal1);
+            inventario[i][0]=cantidadString1;
+            System.out.println("Lo restante es:"+inventario[i][0]);
+            String precioIndividualString=inventario[i][3];
+            float precioIndividualFloat=Float.parseFloat(precioIndividualString);
+            SumaTotal=(precioIndividualFloat*cantidad)+SumaTotal;
         }
-        }
-        }System.out.println("Precio Total: $"+SumaTotal+"\n"); //Se le comenta cuanto gasto el usuario.
-        regresar(); //llamamos al metodo regresar
+        System.out.println("Precio Total: $"+SumaTotal+"\n");
+        regresar();
         }
 }   
 
