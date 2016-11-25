@@ -263,35 +263,35 @@ public class ProyectoFinal {
         return archivo; //y lo mandaremos para ser analizado
     }
     public static void Ventas(String[][] inventario){
-        Scanner entrada=new Scanner(System.in);
-        boolean ventas = true;
-        int cantidadInt,cantidad,CantidadTotal1;
-        for(int i=0;i<inventario.length;i++)
+        Scanner entrada=new Scanner(System.in);//llamamos el método de ventas
+        boolean ventas = true;//un método booleano que se asigna con verdadero
+        int cantidadInt,cantidad,CantidadTotal1;//Declaramos valores enteros
+        for(int i=0;i<inventario.length;i++)//Ciclo for que nos ayuda para identificar el inventario.
         {
             for(int j=0;j<4;j++)
             {
-                productos[i][j]=inventario[i][j];
+                productos[i][j]=inventario[i][j];//llamamos a la variable global de productos
             }
         }
         System.out.println("\n");
-        float SumaTotal =0;
-        for (int i=0;i<inventario.length;i++)
+        float SumaTotal =0;//Se declara variable float
+        for (int i=0;i<inventario.length;i++)// se crea este ciclo for para ayudarnos a identificar
         {
-            String clave1=inventario[i][1];
+            String clave1=inventario[i][1];//Se asigna un valor especifico de la matriz
             System.out.println("¿Cuanta cantidad se vendio del articulo?"+clave1+":");
-            cantidad=entrada.nextInt();
-            int cantidad1=Integer.parseInt(inventario[i][0]);
-            CantidadTotal1= cantidad1-cantidad;
-            String cantidadString1=Integer.toString(CantidadTotal1);
-            inventario[i][0]=cantidadString1;
+            cantidad=entrada.nextInt();//Se usa el scanner para asignar una valor a la var. cantidad
+            int cantidad1=Integer.parseInt(inventario[i][0]);//Se convierte de string a int un valor especifico de la matriz
+            CantidadTotal1= cantidad1-cantidad;//A este valor se le resta la cantidad la cantidad que se vendio de un articulo
+            String cantidadString1=Integer.toString(CantidadTotal1);//Se convierte a string esta cantidad total
+            inventario[i][0]=cantidadString1;// Se devuelve a la matriz el la cantidad total
             System.out.println("Lo restante es:"+inventario[i][0]);
-            String precioIndividualString=inventario[i][3];
-            float precioIndividualFloat=Float.parseFloat(precioIndividualString);
-            SumaTotal=(precioIndividualFloat*cantidad)+SumaTotal;
+            String precioIndividualString=inventario[i][3];// Se asigna a una variable un valor especifico de la matriz.
+            float precioIndividualFloat=Float.parseFloat(precioIndividualString);//Se convierte esta valor especifico a de string a float
+            SumaTotal=(precioIndividualFloat*cantidad)+SumaTotal;//Se toma el suma total de las ventas.
         }
-        System.out.println("Precio Total: $"+SumaTotal+"\n");
-        productos=inventario;
-        regresar();
+        System.out.println("Precio Total: $"+SumaTotal+"\n");//Se le informa al usuario las ventas totales
+        productos=inventario;//procutos es igual a inventario
+        regresar();//llamamos al método regresar()
         }
 }   
 
