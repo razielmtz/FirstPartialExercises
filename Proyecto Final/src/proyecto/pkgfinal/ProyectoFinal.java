@@ -290,6 +290,7 @@ public class ProyectoFinal {
             SumaTotal=(precioIndividualFloat*cantidad)+SumaTotal;
         }
         System.out.println("Precio Total: $"+SumaTotal+"\n");
+        productos=inventario;
         regresar();
         }
 }   
