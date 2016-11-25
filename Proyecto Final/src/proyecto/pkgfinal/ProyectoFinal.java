@@ -11,7 +11,7 @@ import java.util.*;
  * @author Raziel 2
  */
 public class ProyectoFinal {
-    public static String[][] productos = new String[100][400];
+    public static String[][] productos = new String[100][400];//Creamos una nueva clase con una variable global de tipo [][]
     /**
      * @param args the command line arguments
      */
