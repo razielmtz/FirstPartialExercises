@@ -26,13 +26,13 @@ public class ProyectoFinal {
         opcion = entrada.nextLine(); //Nuestra variable recibe la entrada por teclado
         switch (opcion){
             case "1": //En caso de ser uno ejecutara esto
-                int op=1;
+                String op="1";
                 inventario=inventario(); //Nuestro arreglo inventario tomara lo valores obtenidos en el metodo inventario()
                 nombre=pedirNombreDelArchivo(); //Utilizaremos el pedir nombre de archivo en caso de ser necesario
                 crearArchivo(inventario,nombre); //Se ejecutara el metodo para crear archivo, tomando parametros con los datos del arreglo inventario y el nombre de archvo
                 System.out.println("\n¿Desea ir a ventas ahora?\n[ 1 ]: Si\n[ cualquier otra tecla ]: No ");
-                op = entrada.nextInt(); //la opcion sera la entrada por teclado para determinar si se desea pasar directamente al siguiente paso
-                if (op==1){ //Si la opcion es 1
+                op = entrada.nextLine(); //la opcion sera la entrada por teclado para determinar si se desea pasar directamente al siguiente paso
+                if (op=="1"){ //Si la opcion es 1
                     Ventas(inventario); //Ejecutara directamente el metodo ventas
                 }
                 regresar(); //una vez terminado, se ejecutara el metodo para ver si se desea volver al menu
