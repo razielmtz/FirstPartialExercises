@@ -293,6 +293,6 @@ public static String[][] productos = new String[100][400];//Creamos una nueva cl
         }
         System.out.println("Precio Total: $"+SumaTotal+"\n");//Se le informa al usuario las ventas totales
         productos=inventario;//procutos es igual a inventario
-        regresar();//llamamos al método regresar()
+        regresar();//llamamos al método regresar()-
         }
 }  
