@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 package proyecto.pkgfinal;
-import java.util.*;
 import java.io.*;
+import java.util.*;
 /**
  *
- * @author Raziel 2
+ * @author Enano
  */
 public class ProyectoFinal {
-
+    public static String[][] productos = new String[100][400];
     /**
      * @param args the command line arguments
      */
@@ -23,7 +23,7 @@ public class ProyectoFinal {
         String[][] inventario;
         String opcion,nombre;
         Scanner entrada=new Scanner (System.in);
-        System.out.println("Bienvenido a mi tiendita.\nPor favor introduzca una opcion del menu.\n1.\tInventario.\n2.\tVentas.\n3.\tCierre del d�a.\n4.\tSalir.");
+        System.out.println("Bienvenido a mi tiendita.\nPor favor introduzca una opcion del menu.\n1.\tInventario.\n2.\tVentas.\n3.\tCierre del d?a.\n4.\tSalir.");
         opcion = entrada.nextLine();
         switch (opcion){
             case "1":
@@ -39,9 +39,16 @@ public class ProyectoFinal {
                 regresar();
                 break;
             case "2":
-                
-                Ventas();
-                regresar();
+                if(productos[0][0]==null)
+                {
+                    System.out.println("Cree un inventario y vuelva a intentarlo");
+                    menu();
+                }
+                else
+                {
+                    Ventas(productos);
+                    regresar();
+                }
                 break;
             case "3":
                 nombre=pedirArchivo();
@@ -79,7 +86,7 @@ public class ProyectoFinal {
 
         String op;
         Scanner entrada= new Scanner (System.in);
-        System.out.println("�Seguro que desea salir?\n[ 1 ] : No\n[ cualquier otra tecla ]: Si");
+        System.out.println("?Seguro que desea salir?\n[ 1 ] : No\n[ cualquier otra tecla ]: Si");
         op= entrada.nextLine();
         if (op=="1"){
             menu();
@@ -93,7 +100,7 @@ public class ProyectoFinal {
     public static void mensajeSalida3(){
         String tecla;
         Scanner entrada= new Scanner (System.in);
-        System.out.println("\n\nPor favor indicar con alg�n n�mero que opci�n desea realizar del men�.\nPulse cualquier tecla para proseguir.");
+        System.out.println("\n\nPor favor indicar con alg?n n?mero que opci?n desea realizar del men?.\nPulse cualquier tecla para proseguir.");
         tecla= entrada.nextLine();
         menu();
     }
@@ -103,6 +110,13 @@ public class ProyectoFinal {
         mercancia = pedirNumMercancia();
         String[][] invent= new String[mercancia][4];
         invent=pedirClaveMercancia(invent);
+        for(int i=0;i<mercancia;i++)
+        {
+            for(int j=0;j<4;j++)
+            {
+                productos[i][j]=invent[i][j];
+            }
+        }
         return invent;
     }
 
@@ -121,14 +135,14 @@ public class ProyectoFinal {
         for (int i = 0; i <arreglo.length;i++){
             for (int j = 0; j < arreglo[0].length; j++) {
                 if (j==0){
-                    System.out.print("Por favor introducir la cantidad de la mercanc�a\t\t[ "+orden+" ]:");
+                    System.out.print("Por favor introducir la cantidad de la mercanc?a\t\t[ "+orden+" ]:");
                     cantidad = entrada.nextLine();
                     //int cantidadInt = Integer.parseInt(cantidad);
                     //System.out.println(cantidadInt) //Aqui te dejo la cantidad convertida a float.
                     arreglo[i][j]= cantidad;  
                     } 
                 if (j==1){
-                    System.out.print("Por favor introducir la clave de la mercanc�a\t\t\t[ "+orden+" ]:");
+                    System.out.print("Por favor introducir la clave de la mercanc?a\t\t\t[ "+orden+" ]:");
                     clave = entrada.nextLine();
                     for (int k = 0; k < i; k++) {
                         while (arreglo [k][1].contains(clave)){
@@ -138,7 +152,7 @@ public class ProyectoFinal {
                     }
                     arreglo[i][j]=clave;
                 } if (j==2){
-                    System.out.print("Por favor introducir la descripci�n de la mercanc�a\t\t[ "+orden+" ]:");
+                    System.out.print("Por favor introducir la descripci?n de la mercanc?a\t\t[ "+orden+" ]:");
                     descripcion = entrada.nextLine();
                     arreglo [i][j]=descripcion;
                 }
@@ -247,27 +261,31 @@ public class ProyectoFinal {
         Scanner entrada=new Scanner(System.in);
         boolean ventas = true;
         int cantidadInt,cantidad,CantidadTotal1;
-        System.out.println(inventario);
+        for(int i=0;i<inventario.length;i++)
+        {
+            for(int j=0;j<4;j++)
+            {
+                productos[i][j]=inventario[i][j];
+            }
+        }
         System.out.println("\n");
         float SumaTotal =0;
-        for (int i=0;i<inventario.length;i++){
-            for(int j=0;j<inventario.length;j++){
-                for(int k = 0;k<inventario.length;k++){
+        for (int i=0;i<inventario.length;i++)
+        {
             String clave1=inventario[i][1];
             System.out.println("¿Cuanta cantidad se vendio del articulo?"+clave1+":");
             cantidad=entrada.nextInt();
-            String cantidad1=inventario[j][0];
-            int cantidadInt1=Integer.parseInt(cantidad1);
-            CantidadTotal1= cantidadInt1-cantidad;
+            int cantidad1=Integer.parseInt(inventario[i][0]);
+            CantidadTotal1= cantidad1-cantidad;
             String cantidadString1=Integer.toString(CantidadTotal1);
             inventario[i][0]=cantidadString1;
             System.out.println("Lo restante es:"+inventario[i][0]);
-            String precioIndividualString=inventario[k][3];
+            String precioIndividualString=inventario[i][3];
             float precioIndividualFloat=Float.parseFloat(precioIndividualString);
-            SumaTotal=precioIndividualFloat+SumaTotal;
+            SumaTotal=(precioIndividualFloat*cantidad)+SumaTotal;
         }
-        }
-        }System.out.println("Precio Total: $"+SumaTotal+"\n");
+        System.out.println("Precio Total: $"+SumaTotal+"\n");
         regresar();
         }
 }   
+
