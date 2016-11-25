@@ -122,10 +122,10 @@ public class ProyectoFinal {
 
     public static int pedirNumMercancia(){
         int mercancia;
-        Scanner entrada=new Scanner (System.in);
+        Scanner entrada=new Scanner (System.in);//pedimos la cantidad de prodcutos que metera al arreglo
         System.out.println("Favor de introducir la cantidad de productos que va a registrar:");
-        mercancia = entrada.nextInt();
-        return mercancia;
+        mercancia = entrada.nextInt(); //cuando tengamos el numero de productos podremos delimitar el arreglo
+        return mercancia;               //y solo pedir los parametros cierta cantidad de veces
     }
 
     public static String[][] pedirClaveMercancia(String[][] arreglo){
@@ -172,16 +172,16 @@ public class ProyectoFinal {
         }
     public static String pedirNombreDelArchivo(){
         String doc, opcion;
-        java.util.Date fecha = new Date();
+        java.util.Date fecha = new Date(); //esta clase como la de escanner nos ayuda crear un fecha y guardarla
         Scanner entrada = new Scanner (System.in);
         System.out.println("¿Desea guardar el inventario con la fecha de hoy?\n\n[ 1 ]: Si\n[ Otra tecla ]:");
-        opcion=entrada.nextLine();
+        opcion=entrada.nextLine(); //si ya existe esa fecha guardada, entonces el usuario introducira el nombre del archivo
         switch (opcion){
             case "1":
                 System.out.println(fecha);
-                Calendar c1 = Calendar.getInstance();
-                doc = Integer.toString(c1.get(Calendar.DATE));
-                return doc;
+                Calendar c1 = Calendar.getInstance();//nos permite guardar y capturar la fecha del dia
+                doc = Integer.toString(c1.get(Calendar.DATE));//DATE se encuentra dentro de la clase de Calendar
+                return doc; //en doc se guarda la fecha que obtuvimos de la clase Calendar
             default:
                 System.out.println("¿Cómo desea guardar el documento?");
                 doc=entrada.nextLine();
@@ -189,11 +189,16 @@ public class ProyectoFinal {
     }
     }
      public static void crearArchivo(String [][]inventario, String nombre){
-        
+        // Paso 1.- Instanciamos un objeto de la clase File 
+        // Al instanciar escribimos como parámetro 
+        // El nombre del archivo para manipularlo
         File archivo = new File(nombre + ".txt");
-       
+       // Paso 2.- Si no existe el archivo
         if (!archivo.exists())
-        {   try {  
+        {   try { 
+            // try nos sirve para manejar excepciones. En caso de que algo
+            // pueda salir mal.
+            // Creamos un archivo nuevo.
             archivo.createNewFile();
             } catch (IOException ex) {
                ex.printStackTrace();
@@ -204,16 +209,19 @@ public class ProyectoFinal {
             nombre = pedirNombreDelArchivo();
             crearArchivo(inventario,nombre);
             }
-        
+        // Paso 3.- Escritura en el archivo
         try {
-         
+         // Instanciamos un objeto de la clase PrintWriter
+            // como parámetros enviamos el la instancia de File y el formato de
+            // archivo de texto
             PrintWriter escribir = new PrintWriter (archivo,"utf-8");
-            
+            // Escribimos el contenido del archivo
             escribir.println("Cant\tClave\tDescripción\tPrecio"); 
             for(int i=0;i<inventario.length;i++){ 
                 for(int j=0;j<inventario[0].length;j++){ 
                 escribir.print(inventario[i][j] + "\t");
                 }
+                //corremos de nuevo todo el arreglo para escribirlo en el archivo
                 escribir.println();
             }
             escribir.close();
@@ -252,10 +260,10 @@ public class ProyectoFinal {
 }
     public static String pedirArchivo(){
         String archivo;
-        Scanner entrada= new Scanner (System.in);
+        Scanner entrada= new Scanner (System.in);//por medio del teclado capturaremos el nombre del archivo que quiere ver
         System.out.print("Ingrese el nombre del archivo del inventario que desean abrir:");
         archivo=entrada.nextLine();
-        return archivo;
+        return archivo; //y lo mandaremos para ser analizado
     }
     public static void Ventas(String[][] inventario){
         Scanner entrada=new Scanner(System.in);
