@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.*;
 /**
  *
- * @author Enano
+ * @author Raziel 2
  */
 public class ProyectoFinal {
     public static String[][] productos = new String[100][400];
