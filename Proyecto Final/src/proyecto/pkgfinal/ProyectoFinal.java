@@ -149,38 +149,38 @@ public static String[][] productos = new String[100][400];//Creamos una nueva cl
                             clave=entrada.nextLine();////Tomamos un nuevo valor para la variable cantidad.
                         }
                     }
-                    arreglo[i][j]=clave;
+                    arreglo[i][j]=clave;//asignamos cantidad en el arreglo
                 } if (j==2){
-                    System.out.print("Por favor introducir la descripci?n de la mercanc?a\t\t[ "+orden+" ]:");
-                    descripcion = entrada.nextLine();
-                    arreglo [i][j]=descripcion;
+                    System.out.print("Por favor introducir la descripci?n de la mercanc?a\t\t[ "+orden+" ]:");// Le pedimos al usuario que asigne un valor a la descripción.
+                    descripcion = entrada.nextLine();// el escaner toma el dato y lo gaurda en descripción.
+                    arreglo [i][j]=descripcion;//se guarda la descripción en el arreglo
                 }
                 if (j==3){
-                    System.out.print("Por favor introducir el precio de la mercancia:\t\t\t[ "+orden+" ]: $");
-                    precio = entrada.nextLine();
+                    System.out.print("Por favor introducir el precio de la mercancia:\t\t\t[ "+orden+" ]: $");//Le pedimos al usaurio que asigne un precio a la mercancía
+                    precio = entrada.nextLine();//Se toma el precio
                     System.out.println("\n");
-                    float precioFloat = Float.parseFloat(precio);
+                    float precioFloat = Float.parseFloat(precio);//Como el maetro nos pide que usemos cada dato con la nomenclatura correcta, tenemos que convertirlo a string para que funcione todo en el arreglo
                     //System.out.println(precioFloat); Aqui te dejo el precio convertido a float.
                     arreglo[i][j]= precio;                
             }
             }
-            orden++;
+            orden++;//se va sumando la variable de orden de uno en uno.
             }
        
             return arreglo;
         }
     public static String pedirNombreDelArchivo(){
         String doc, opcion;
-        java.util.Date fecha = new Date();
+        java.util.Date fecha = new Date();//esta clase como la de escanner nos ayuda crear un fecha y guardarla
         Scanner entrada = new Scanner (System.in);
         System.out.println("¿Desea guardar el inventario con la fecha de hoy?\n\n[ 1 ]: Si\n[ Otra tecla ]:");
-        opcion=entrada.nextLine();
+        opcion=entrada.nextLine();//si ya existe esa fecha guardada, entonces el usuario introducira el nombre del archivo
         switch (opcion){
             case "1":
                 System.out.println(fecha);
-                Calendar c1 = Calendar.getInstance();
-                doc = Integer.toString(c1.get(Calendar.DATE));
-                return doc;
+                Calendar c1 = Calendar.getInstance();//nos permite guardar y capturar la fecha del dia
+                doc = Integer.toString(c1.get(Calendar.DATE));//DATE se encuentra dentro de la clase de Calendar
+                return doc;//en doc se guarda la fecha que obtuvimos de la clase Calendar
             default:
                 System.out.println("¿Cómo desea guardar el documento?");
                 doc=entrada.nextLine();
@@ -188,11 +188,16 @@ public static String[][] productos = new String[100][400];//Creamos una nueva cl
     }
     }
      public static void crearArchivo(String [][]inventario, String nombre){
-       
+       // Paso 1.- Instanciamos un objeto de la clase File 
+        // Al instanciar escribimos como parámetro 
+        // El nombre del archivo para manipularlo
         File archivo = new File(nombre + ".txt");
       
         if (!archivo.exists())
         {   try { 
+            // try nos sirve para manejar excepciones. En caso de que algo
+            // pueda salir mal.
+            // Creamos un archivo nuevo.
             archivo.createNewFile();
             } catch (IOException ex) {
                ex.printStackTrace();
@@ -203,16 +208,19 @@ public static String[][] productos = new String[100][400];//Creamos una nueva cl
             nombre = pedirNombreDelArchivo();
             crearArchivo(inventario,nombre);
             }
-       
+       // Paso 3.- Escritura en el archivo
         try {
-        
+        // Instanciamos un objeto de la clase PrintWriter
+            // como parámetros enviamos el la instancia de File y el formato de
+            // archivo de texto
             PrintWriter escribir = new PrintWriter (archivo,"utf-8");
-           
+           // Escribimos el contenido del archivo
             escribir.println("Cant\tClave\tDescripción\tPrecio");
             for(int i=0;i<inventario.length;i++){
                 for(int j=0;j<inventario[0].length;j++){
                 escribir.print(inventario[i][j] + "\t");
                 }
+                //corremos de nuevo todo el arreglo para escribirlo en el archivo
                 escribir.println();
             }
             escribir.close();
@@ -251,39 +259,40 @@ public static String[][] productos = new String[100][400];//Creamos una nueva cl
 }
     public static String pedirArchivo(){
         String archivo;
-        Scanner entrada= new Scanner (System.in);
+        Scanner entrada= new Scanner (System.in);//por medio del teclado capturaremos el nombre del archivo que quiere ver
         System.out.print("Ingrese el nombre del archivo del inventario que desean abrir:");
         archivo=entrada.nextLine();
-        return archivo;
+        return archivo;//y lo mandaremos para ser analizado
     }
     public static void Ventas(String[][] inventario){
-        Scanner entrada=new Scanner(System.in);
-        boolean ventas = true;
-        int cantidadInt,cantidad,CantidadTotal1;
-        for(int i=0;i<inventario.length;i++)
+        Scanner entrada=new Scanner(System.in);//llamamos el método de ventas
+        boolean ventas = true;//un método booleano que se asigna con verdadero
+        int cantidadInt,cantidad,CantidadTotal1;//Declaramos valores enteros
+        for(int i=0;i<inventario.length;i++)//Ciclo for que nos ayuda para identificar el inventario.
         {
             for(int j=0;j<4;j++)
             {
-                productos[i][j]=inventario[i][j];
+                productos[i][j]=inventario[i][j];//llamamos a la variable global de productos
             }
         }
         System.out.println("\n");
-        float SumaTotal =0;
+        float SumaTotal =0;//Se declara variable float
         for (int i=0;i<inventario.length;i++)
         {
-            String clave1=inventario[i][1];
+            String clave1=inventario[i][1];//Se asigna un valor especifico de la matriz
             System.out.println("¿Cuanta cantidad se vendio del articulo? "+clave1+":");
-            cantidad=entrada.nextInt();
-            int cantidad1=Integer.parseInt(inventario[i][0]);
-            CantidadTotal1= cantidad1-cantidad;
-            String cantidadString1=Integer.toString(CantidadTotal1);
-            inventario[i][0]=cantidadString1;
+            cantidad=entrada.nextInt();//Se usa el scanner para asignar una valor a la var. cantidad
+            int cantidad1=Integer.parseInt(inventario[i][0]);//Se convierte de string a int un valor especifico de la matriz
+            CantidadTotal1= cantidad1-cantidad;//A este valor se le resta la cantidad la cantidad que se vendio de un articulo
+            String cantidadString1=Integer.toString(CantidadTotal1);//Se convierte a string esta cantidad total
+            inventario[i][0]=cantidadString1;// Se devuelve a la matriz el la cantidad total
             System.out.println("Lo restante es:"+inventario[i][0]);
-            String precioIndividualString=inventario[i][3];
-            float precioIndividualFloat=Float.parseFloat(precioIndividualString);
-            SumaTotal=(precioIndividualFloat*cantidad)+SumaTotal;
+            String precioIndividualString=inventario[i][3];// Se asigna a una variable un valor especifico de la matriz.
+            float precioIndividualFloat=Float.parseFloat(precioIndividualString);//Se convierte esta valor especifico a de string a float
+            SumaTotal=(precioIndividualFloat*cantidad)+SumaTotal;//Se toma el suma total de las ventas.
         }
-        System.out.println("Precio Total: $"+SumaTotal+"\n");
-        regresar();
+        System.out.println("Precio Total: $"+SumaTotal+"\n");//Se le informa al usuario las ventas totales
+        productos=inventario;//procutos es igual a inventario
+        regresar();//llamamos al método regresar()
         }
 }  
