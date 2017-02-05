@@ -12,7 +12,8 @@ package firstpartialexercises;
  */
 public class Circle { //declaration of the atributes of the class
     private double radius;
-    
+    //Initialize atributes
+    //Constructors
     public Circle(){ //radius = 1
         this(1.0);
     }

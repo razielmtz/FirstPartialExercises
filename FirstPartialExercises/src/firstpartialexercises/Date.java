@@ -11,15 +11,17 @@ package firstpartialexercises;
  * @author Raziel 2
  */
 public class Date {
+    //Declaration of atributes
     private int day;
     private int month;
     private int year;
-    
+    //Initialize atributes
     public Date(int day, int month, int year){
         this.day = day;
         this.month = month;
         this.year = year;        
     }
+    //Getters and Setters
     public int getDay() {
         return this.day;
     }
@@ -44,9 +46,9 @@ public class Date {
         this.year = year;
     }
     @Override 
-    public String toString(){
-        return String.format("%02",this.day) + "/"
+    public String toString(){ //Returns String
+        return String.format("%02",this.day) + "/" //%02 for 2 digits
                + String.format("%02",this.month) + "/"
-               + String.format("%04",this.year);
+               + String.format("%04",this.year); //%04 for 4 digits
     }
 }

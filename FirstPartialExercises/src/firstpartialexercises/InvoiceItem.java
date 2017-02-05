@@ -11,17 +11,19 @@ package firstpartialexercises;
  * @author Raziel 2
  */
 public class InvoiceItem {
+    //Declaration of atributes
     private String id;
     private String desc;
     private int qty;
     private double unitPrice;
-    
+    //Initialize Atributes
     public InvoiceItem(String id, String desc, int qty, double unitPrice){
         this.id = id;
         this.desc = desc;
         this.qty = qty;
         this.unitPrice = unitPrice;
     }
+    //Getters and Setters
     public String getId() {
         return this.id;
     }
@@ -44,7 +46,7 @@ public class InvoiceItem {
         return unitPrice * qty;
     }  
     @Override
-    public String toString(){
+    public String toString(){ //Return String
     return "InvoiceItem[id = " + this.id + " desc = " + this.desc + " qty = " + this.qty + " unitPrice = " + this.unitPrice + "]";
     }
 }

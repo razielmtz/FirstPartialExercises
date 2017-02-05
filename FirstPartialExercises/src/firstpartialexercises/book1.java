@@ -14,11 +14,12 @@ import firstpartialexercises.Author;
  * @author Raziel 2
  */
 public class book1 {
+    //Declaration of atributes
     private String name;
     private Author author;
     private double price;
     private int qty=0;
-    
+    //Initialize atributes
     public book1(String name, Author author, double price){
         this.name = name;
         this.author = author;
@@ -30,6 +31,7 @@ public class book1 {
         this.price=price;
         this.qty=qty;
     }
+    //Getters and Setters
     public String getName(){
         return this.name;
     }
@@ -49,7 +51,7 @@ public class book1 {
         this.qty = qty;
     }
     @Override
-    public String toString(){
+    public String toString(){ //returns string including the information of the class Author
         return "Book[name = " + this.name + "Author[" + author.toString() + "]" + ", price = " + this.price + ", qty = " + this.qty + "]";
     }
 }

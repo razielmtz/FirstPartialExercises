@@ -11,10 +11,12 @@ package firstpartialexercises;
  * @author Raziel 2
  */
 public class Rectangle {
+    //Declaration of atributes
     private float length;
     private float width;
     
     public Rectangle(){
+        //Initialize atributes
         length = 1.0f;
         width = 1.0f;
     }
@@ -22,7 +24,7 @@ public class Rectangle {
         this.length = length;
         this.width = width;
     }
-
+    //Getters and Setters
     public float getLength() {
         return this.length;
     }
@@ -44,8 +46,8 @@ public class Rectangle {
     public double getPerimeter(){
         return 2* (this.length + this.width);
     }
-    @Override
-    public String toString(){
+    @Override 
+    public String toString(){ //returns String
         return "Rectangle(length" + this.length + "width" + this.width + "}";
     }
 }

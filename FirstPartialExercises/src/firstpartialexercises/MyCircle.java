@@ -11,21 +11,23 @@ package firstpartialexercises;
  * @author Raziel 2
  */
 public class MyCircle {
+    //Declaration of Atributes
     private MyPoint center;
     private int radius;
-    
+    //Initialize Atributes
     public MyCircle(){
-        this.center = new MyPoint();
-        this.radius = 1;
+        this.center = new MyPoint(); // this is equal to (0,0) as a default vaule
+        this.radius = 1; //defult value
     }
     public MyCircle(int x, int y, int radius){
-        center = new MyPoint(x,y);
-        this.radius = radius;
+        center = new MyPoint(x,y); //Create a new point for the center
+        this.radius = radius; 
     }
     public MyCircle(MyPoint center, int radius){
         this.center = center;
         this.radius = radius;
     }
+    //Getters and Setters
     public int getCenterX(){
         return this.center.getX();
     }
@@ -45,16 +47,16 @@ public class MyCircle {
         this.center.setXY(x, y);
     }
     @Override
-    public String toString(){
+    public String toString(){ //Returns String
         return "MyCircle[radius = " + this.radius + ",center = [" + center + ")]";
     }
-    public double getArea(){
+    public double getArea(){ //Obtain the circle area with the formula PI*r^2
         return Math.PI * Math.pow(this.radius,2);
     }
-    public double getCircumference(){
+    public double getCircumference(){ //Obtain the circumference with the formula PI*2r
         return Math.PI * (this.radius *2);
     }
-    public double distance(MyCircle another){
+    public double distance(MyCircle another){ //Obtain the distance between the center of this circle and another center
         return center.distance(another.center);
     }
 }

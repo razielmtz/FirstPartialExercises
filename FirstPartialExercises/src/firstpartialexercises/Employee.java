@@ -11,17 +11,19 @@ package firstpartialexercises;
  * @author Raziel 2
  */
 public class Employee {
+    //Declaration of Atributes
     private int id;
     private String firstName;
     private String lastName;
     private int salary;
-    
+    //Initialize Atributes
     public Employee(int id, String firstName, String lastName, int salary){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
     }
+    //Getters and Setters
     public int getId() {
         return this.id;
     }
@@ -43,12 +45,12 @@ public class Employee {
     public int getAnnualSalary(){
         return this.salary * 12;
     }
-    public int raiseSalary(int percent){
-        this.salary += this.salary * percent /100;
+    public int raiseSalary(int percent){ // Add percente of salary 
+        this.salary += this.salary * percent /100; //add the percent of the salary to the salary
         return this.salary;
     }
     @Override
-    public String toString(){
+    public String toString(){ //Return String
         return "Employee[id = " + this.id + "Name = " + this.getName() + "Salary =" + this.salary + "]";
     }
 }

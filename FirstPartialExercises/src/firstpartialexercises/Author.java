@@ -11,15 +11,17 @@ package firstpartialexercises;
  * @author Raziel 2
  */
 public class Author {
+    //AtributesDeclaration
     private String name;
     private String email;
     private char gender;
-    
+    // Initialize atributes
     public Author(String name, String email, char gender){
         this.name = name;
         this.email = email;
         this.gender = gender;
     }
+    //Getters and Setters
     public String getName(){
         return this.name;
     }
@@ -34,7 +36,7 @@ public class Author {
         return this.gender;
     } 
     @Override
-    public String toString() {
+    public String toString() { //return String
         return "Author[" + "name = " + name + ", email = " + email + ", gender = " + gender + ']';
     }
 }

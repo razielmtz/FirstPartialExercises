@@ -16,9 +16,9 @@ public class FirstPartialExercises {
      */
     public static void main(String[] args) {
       //tester of MyRectangle class
-      MyRectangle rectangle = new MyRectangle(1,7,4,2);  
-      System.out.println(rectangle);  
-      System.out.println("Area is " + rectangle.getArea());  
-      System.out.println("Perimeter is " + rectangle.getPerimeter());  
+      MyRectangle rectangle = new MyRectangle(1,7,4,2);  //topLeft(1,7) bottomRight(4,2)
+      System.out.println(rectangle);  //Prints the String
+      System.out.println("Area is " + rectangle.getArea());  //Print area of the rectangle
+      System.out.println("Perimeter is " + rectangle.getPerimeter());  //Print perimeter of the rectangle
     }
 }
