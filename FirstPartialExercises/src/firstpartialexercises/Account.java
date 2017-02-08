@@ -10,28 +10,28 @@ package firstpartialexercises;
  *
  * @author Raziel 2
  */
-public class Account {
+public class Account {  
     //Atributes Declaration
     private String id;
     private String name;
     private int balance;
-    //Initialize Atributes
-    public Account(String id, String name){
+    //Initialize Atributes 
+    public Account(String id, String name){ 
         this(id, name, 0); 
     }
-    public Account(String id, String name, int balance){
+    public Account(String id, String name, int balance){ 
         this.id = id;
         this.name = name;
         this.balance = balance;
     }
     //Getters and Setters
-    public String getId() {
+    public String getId() { 
         return this.id;
     }
-    public String getName() {
+    public String getName() { 
         return this.name;
     }
-    public int getBalance() {
+    public int getBalance() { 
         return this.balance;
     }
     public int credit(int amount){ 
