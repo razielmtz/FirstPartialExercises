@@ -37,7 +37,7 @@ public class MyPoint {
         this.y = y;
     }
     public int[] getXY(){ //create an array (x,y)
-        int[] array = {2};
+        int[] array = new int [2];
         array[0]=this.x;
         array[1]=this.y;
         return array; 
