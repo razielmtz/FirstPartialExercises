@@ -24,6 +24,7 @@ public class book {
         this.name = name;
         this.authors = authors;
         this.price = price;
+        this.qty = 0;
     }
     public book(String name, Author[] author, double price, int qty){
         this.name = name;
