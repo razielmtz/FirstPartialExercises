@@ -21,6 +21,7 @@ public class FirstPartialExercises {
       System.out.println("Area is " + rectangle.getArea());  //Print area of the rectangle
       System.out.println("Perimeter is " + rectangle.getPerimeter());  //Print perimeter of the rectangle
       Time myTime = new Time(9,53,10);
-      System.out.print(myTime.toString());
+      System.out.println(myTime.toString());
+      System.out.print(myTime.nextSecond());
     }
 }
