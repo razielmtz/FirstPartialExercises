@@ -18,12 +18,13 @@ public class book1 {
     private String name;
     private Author author;
     private double price;
-    private int qty=0;
+    private int qty;
     //Initialize atributes
     public book1(String name, Author author, double price){
         this.name = name;
         this.author = author;
         this.price = price;
+        this.qty = 0;
     }
     public book1(String name, Author author, double price, int qty){
         this.name=name;
