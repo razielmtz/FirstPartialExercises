@@ -52,8 +52,8 @@ public class Time {
 
     @Override
     public String toString() { //returns String
-        return String.format("%02d",this.hour) + "/" //%02d for 2 digits double
-               + String.format("%02d",this.minute) + "/"
+        return String.format("%02d",this.hour) + ":" //%02d for 2 digits double
+               + String.format("%02d",this.minute) + ":"
                + String.format("%02d",this.second);
     }
     public Time nextSecond(){ //show the next second
