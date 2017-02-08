@@ -18,7 +18,7 @@ public class Time {
     //Initialize atributes
     public Time(int hour, int minute, int second){
         this.hour = hour;
-        this.minute = hour;
+        this.minute = minute;
         this.second = second;
     }
     public Time(){ //Default values
