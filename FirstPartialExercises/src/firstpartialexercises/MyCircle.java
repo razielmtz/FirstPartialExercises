@@ -28,6 +28,18 @@ public class MyCircle {
         this.radius = radius;
     }
     //Getters and Setters
+    public int getRadius(){
+        return this.radius;
+    }
+    public void setRadius(int radius){
+        this.radius = radius;
+    }
+    public MyPoint getCenter(){
+        return this.center;
+    }
+    public void setCenter(MyPoint center){
+        this.center = center;
+    }
     public int getCenterX(){
         return this.center.getX();
     }
